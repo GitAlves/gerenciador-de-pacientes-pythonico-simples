@@ -1,6 +1,6 @@
 # Gerenciador de pacientes
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/GitAlves/lista-de-compras-pythonica/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/GitAlves/gerenciador-de-pacientes-pythonico-simples/blob/main/LICENSE)
 
 ## Sobre o projeto
 
