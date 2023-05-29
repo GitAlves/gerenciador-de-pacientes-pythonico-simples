@@ -40,46 +40,52 @@ class ListaPaciente:
         """
         Este método remove pacientes da lista, necessitando do nome para remover o paciente para funcionar
         """
-        try:
-            if self.paciente.paciente[0] == nome_paciente:
-                lista = self.paciente
-                lista.paciente = lista.proximoPaciente
-                self.paciente = lista.paciente
-            else:
-                proximo = self.paciente
-                anterior = None
+        if self.paciente is None:
+            return print('A lista está vazia! Não há pacientes para remover.')
+        else:
+            try:
+                if self.paciente.paciente[0] == nome_paciente:
+                    lista = self.paciente
+                    lista.paciente = lista.proximoPaciente
+                    self.paciente = lista.paciente
+                else:
+                    proximo = self.paciente
+                    anterior = None
 
-                while proximo.paciente[0] != nome_paciente:
-                    anterior = proximo
+                    while proximo.paciente[0] != nome_paciente:
+                        anterior = proximo
+                        proximo = proximo.proximoPaciente
+
                     proximo = proximo.proximoPaciente
-
-                proximo = proximo.proximoPaciente
-                anterior.proximoPaciente = proximo
-        except AttributeError:
-            print('Este paciente ainda não foi adicionado!')
+                    anterior.proximoPaciente = proximo
+            except AttributeError:
+                print('Este paciente ainda não foi adicionado!')
 
     def listar_pacientes(self):
         """
         Este método retorna em formato de tabela os elementos da lista encadeada
         """
-        lista = []
-        lista_encadeada = self.paciente
+        if self.paciente is None:
+            return print('A lista está vazia! Não há o que mostrar.')
+        else:
+            lista = []
+            lista_encadeada = self.paciente
 
-        while lista_encadeada and lista_encadeada.paciente is not None:
-            lista.append(lista_encadeada.paciente)
-            lista_encadeada = lista_encadeada.proximoPaciente
+            while lista_encadeada and lista_encadeada.paciente is not None:
+                lista.append(lista_encadeada.paciente)
+                lista_encadeada = lista_encadeada.proximoPaciente
 
-        print('\n--- Listando Fila de Pacientes ---\n')
+            print('\n--- Listando Fila de Pacientes ---\n')
 
-        lista.reverse()
+            lista.reverse()
 
-        codigo = 'Código'
-        nome = 'Nome'
-        estado = 'Estado'
-        print(f'{codigo:10} {nome:10} {estado:7}\n')
+            codigo = 'Código'
+            nome = 'Nome'
+            estado = 'Estado'
+            print(f'{codigo:10} {nome:10} {estado:7}\n')
 
-        for item in lista:
-            print(f'{item[1]:10} {item[0]:10} {item[2]:7}')
+            for item in lista:
+                print(f'{item[1]:10} {item[0]:10} {item[2]:7}')
 
     def quant_pacientes(self):
         """
